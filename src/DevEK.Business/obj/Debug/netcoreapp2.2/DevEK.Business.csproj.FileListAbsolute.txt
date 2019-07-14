@@ -1,0 +1,9 @@
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/bin/Debug/netcoreapp2.2/DevEK.Business.deps.json
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/bin/Debug/netcoreapp2.2/DevEK.Business.dll
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/bin/Debug/netcoreapp2.2/DevEK.Business.pdb
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/obj/Debug/netcoreapp2.2/DevEK.Business.csproj.CoreCompileInputs.cache
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/obj/Debug/netcoreapp2.2/DevEK.Business.AssemblyInfoInputs.cache
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/obj/Debug/netcoreapp2.2/DevEK.Business.AssemblyInfo.cs
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/obj/Debug/netcoreapp2.2/DevEK.Business.dll
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/obj/Debug/netcoreapp2.2/DevEK.Business.pdb
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/obj/Debug/netcoreapp2.2/DevEK.Business.csprojAssemblyReference.cache

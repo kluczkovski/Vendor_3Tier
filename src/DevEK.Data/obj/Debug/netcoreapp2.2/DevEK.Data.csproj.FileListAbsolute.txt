@@ -1,0 +1,14 @@
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/bin/Debug/netcoreapp2.2/DevEK.Data.deps.json
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/bin/Debug/netcoreapp2.2/DevEK.Data.runtimeconfig.json
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/bin/Debug/netcoreapp2.2/DevEK.Data.runtimeconfig.dev.json
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/bin/Debug/netcoreapp2.2/DevEK.Data.dll
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/bin/Debug/netcoreapp2.2/DevEK.Data.pdb
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/bin/Debug/netcoreapp2.2/DevEK.Business.dll
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/bin/Debug/netcoreapp2.2/DevEK.Business.pdb
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/obj/Debug/netcoreapp2.2/DevEK.Data.csprojAssemblyReference.cache
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/obj/Debug/netcoreapp2.2/DevEK.Data.csproj.CoreCompileInputs.cache
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/obj/Debug/netcoreapp2.2/DevEK.Data.AssemblyInfoInputs.cache
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/obj/Debug/netcoreapp2.2/DevEK.Data.AssemblyInfo.cs
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/obj/Debug/netcoreapp2.2/DevEK.Data.csproj.CopyComplete
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/obj/Debug/netcoreapp2.2/DevEK.Data.dll
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Data/obj/Debug/netcoreapp2.2/DevEK.Data.pdb

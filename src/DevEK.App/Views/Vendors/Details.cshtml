@@ -1,0 +1,21 @@
+﻿@model VendorViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4>Details Vendor</h4>
+
+<div class="backgroundWhiteBorder">
+
+    <div class="row">
+        <div class="col-md-4">
+            <partial name="_DetailField.cshtml" />
+            <hr />
+            <h5>Address</h5>
+            <partial name="_AddressDetails.cshtml" />
+            <partial name="_DetailAndBackToListButton" model="@Model.Id" />
+        </div>
+    </div>
+</div>
+

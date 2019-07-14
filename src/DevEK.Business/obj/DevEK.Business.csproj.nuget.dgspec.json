@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/DevEK.Business.csproj": {}
+  },
+  "projects": {
+    "/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/DevEK.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/DevEK.Business.csproj",
+        "projectName": "DevEK.Business",
+        "projectPath": "/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/DevEK.Business.csproj",
+        "packagesPath": "/Users/ekluczkovski/.nuget/packages/",
+        "outputPath": "/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.Business/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/ekluczkovski/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
