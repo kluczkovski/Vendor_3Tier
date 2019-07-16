@@ -1,1 +1,31 @@
-﻿
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Edit New Product";
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<div class="backgroundWhiteBorder">
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                <partial name="_EditField.cshtml" />
+                <partial name="_EditAndBackToListButton" />
+            </form>
+        </div>
+        <div class="col-md-6" style="width:300px; height:428px;">
+           <img src="~/images/@Model.Image" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>// Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });</script>
+}

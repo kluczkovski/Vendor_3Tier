@@ -14,12 +14,15 @@ namespace DevEK.App.Controllers
     public class VendorsController : BaseController
     {
         private readonly IVendorRepository _vendorRep;
+        private readonly IAddressRepository _addressRep;
         private readonly IMapper _mapper;
 
         public VendorsController(IVendorRepository vendorRepository,
+                                 IAddressRepository addressRepository,
                                  IMapper mapper)
         {
             _vendorRep = vendorRepository;
+            _addressRep = addressRepository;
             _mapper = mapper;
         }
 
@@ -126,13 +129,48 @@ namespace DevEK.App.Controllers
         }
 
 
+        // Get: UpdateAddress
+        public async Task<IActionResult> UpdateAddress(Guid id)
+        {
+            var vendor = await VendorFromRepToViewModel(id);
+            if (vendor == null) return NotFound();
+
+            return PartialView("_AddressUpdate", new VendorViewModel { Address = vendor.Address });
+        }
+
+
+        // Post: UpdateAddres
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateAddress(VendorViewModel vendorView)
+        {
+            ModelState.Remove("Name");
+            ModelState.Remove("IdentifiyDocument");
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_AddressUpdate", new VendorViewModel { Address = vendorView.Address });
+            }
+
+            await _addressRep.Update(_mapper.Map<Address>(vendorView.Address));
+
+            var url = Url.Action("GetAddress", "Vendors", new { id = vendorView.Address.VendorId });
+            return Json(new { success = true, url}); 
+        }
+
+
         // Mapper Vendor To ViewModel
         private async Task<VendorViewModel> VendorFromRepToViewModel(Guid id)
         {
-            var vendorFromRep = await _vendorRep.GetVendorAddress(id);
+            var vendorFromRep = await _vendorRep.GetVendorProducsAddress(id);
             return _mapper.Map<VendorViewModel>(vendorFromRep);
         }
 
 
+        // Get Address
+        public async Task<IActionResult> GetAddress(Guid id)
+        {
+            var vendor = await VendorFromRepToViewModel(id);
+            return PartialView("_AddressDetails", new VendorViewModel { Address = vendor.Address });
+        }
     }
 }

@@ -7,23 +7,44 @@
 <h4>Edit Vendor</h4>
 
 <div class="backgroundWhiteBorder">
-
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Edit" method="post">
+    <form asp-action="Edit" method="post">
+        <div class="row">
+            <div class="col-md-6">
                 <input type="hidden" asp-for="Id" />
                 <partial name="_EditField.cshtml" />
-                <h5>Address</h5>
-                <input type="hidden" asp-for="Address.Id" />
-                <partial name="_AddressEdit.cshtml" />
-                <partial name="_EditAndBackToListButton" model="@Model.Id" />
-            </form>
-
+            </div>
         </div>
+        <div class="row">
+            <dv class="col-md-6">
+                <partial name="_EditAndBackToListButton" model="@Model.Id" />
+            </dv>
+        </div>
+    </form>
+
+    <hr />
+    <div id="EnderecoTarget" class="container row">
+        <h5>Address</h5>
+        <input type="hidden" asp-for="Address.Id" />
+        <partial name="_AddressDetails.cshtml" />
+    </div>
+
+</div>
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div> 
     </div>
 </div>
 
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>$(document).ready(function () {
+        AjaxModal();
+
+    });</script>
 }
+
+

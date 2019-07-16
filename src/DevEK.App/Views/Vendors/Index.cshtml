@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<VendorViewModel>
 @using DevEK.Business.Models.Enums
 @using System;
+@using DevEK.App.Extensions;
 
 
 @{
@@ -18,7 +19,7 @@
             <tr>
                 <th>@Html.DisplayNameFor(m => m.Name)</th>
                 <th>@Html.DisplayNameFor(m => m.IdentifiyDocument)</th>
-                <th>@Html.DisplayNameFor(m =>  m.VendorType)</th>
+                <th>@Html.DisplayNameFor(m => m.VendorType)</th>
                 <th>@Html.DisplayNameFor(m => m.IsActive)</th>
                 <th></th>
             </tr>
@@ -27,10 +28,10 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                    <td>@Html.DisplayFor(modelItem => item.IdentifiyDocument)</td>
+                    <td>@item.Name</td>
+                    <td>@this.FormatDocumentId(item.VendorType, item.IdentifiyDocument)</td>
                     <td>@(Enum.GetName(typeof(VendorType), item.VendorType))</td>
-                    <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+                    <td>@item.IsActive</td>
                     <td class="text-right">
                         <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id"><span class="fa fa-search"></span></a>
                         <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><span class="fa fa-pencil-alt"></span></a>
@@ -41,6 +42,6 @@
         </tbody>
 
     </table>
-   
- </div>
+
+</div>
 

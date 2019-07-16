@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DevEK.App.Configuration;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using System.Collections.Generic;
 
 namespace DevEK.App
 {
@@ -57,6 +60,17 @@ namespace DevEK.App
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            // Set Culture info
+            //var defaultCulture = new CultureInfo("pt-BR");
+            //var localizationOptions = new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new RequestCulture(defaultCulture),
+            //    SupportedCultures = new List<CultureInfo> { defaultCulture },
+            //    SupportedUICultures = new List<CultureInfo> { defaultCulture}
+            //};
+            //app.UseRequestLocalization(localizationOptions);
+
 
             app.UseAuthentication();
 

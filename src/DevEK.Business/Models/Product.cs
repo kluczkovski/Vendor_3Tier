@@ -21,6 +21,7 @@ namespace DevEK.Business.Models
 
         public Product()
         {
+            Created = DateTime.UtcNow;
         }
     }
 }

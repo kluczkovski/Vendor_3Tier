@@ -24,6 +24,7 @@
     <Folder Include="Views\Products\" />
     <Folder Include="Views\Vendors\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevEK.Data\DevEK.Data.csproj" />
@@ -37,5 +38,6 @@
     <Content Remove="Views\Products\Delete.json" />
     <Content Remove="Views\Vendos\Delete.json" />
     <Content Remove="Views\Products\Delete.json" />
+    <Content Remove="wwwroot\images\95e2f5ab-029e-412b-b399-63019a3d6050_javascript.jpg" />
   </ItemGroup>
 </Project>

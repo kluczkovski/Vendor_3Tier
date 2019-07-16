@@ -53,3 +53,6 @@
 /Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/obj/Debug/netcoreapp2.2/Razor/Views/Vendors/_AddressEdit.g.cshtml.cs
 /Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/obj/Debug/netcoreapp2.2/Razor/Views/Vendors/_AddressDetails.g.cshtml.cs
 /Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/obj/Debug/netcoreapp2.2/Razor/Views/Products/_EditField.g.cshtml.cs
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/obj/Debug/netcoreapp2.2/Razor/Views/Products/_DetailField.g.cshtml.cs
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/obj/Debug/netcoreapp2.2/Razor/Views/Products/_ListOfProducts.g.cshtml.cs
+/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/obj/Debug/netcoreapp2.2/Razor/Views/Vendors/_AddressUpdate.g.cshtml.cs

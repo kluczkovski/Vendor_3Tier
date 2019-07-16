@@ -1,8 +1,11 @@
 ﻿<Properties StartupConfiguration="{F546CCD9-8503-46F2-BE13-9C20D07A490B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DevEK.App/Views/Products/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DevEK.App/Views/Vendors/Create.cshtml">
     <Files>
-      <File FileName="src/DevEK.App/Controllers/ProductsController.cs" Line="86" Column="36" />
-      <File FileName="src/DevEK.App/Views/Products/Index.cshtml" Line="17" Column="20" />
+      <File FileName="src/DevEK.App/Views/Vendors/_AddressDetails.cshtml" Line="28" Column="49" />
+      <File FileName="src/DevEK.App/wwwroot/js/site.js" Line="44" Column="20" />
+      <File FileName="src/DevEK.App/Views/Vendors/_AddressUpdate.cshtml" Line="31" Column="16" />
+      <File FileName="src/DevEK.Business/Models/Address.cs" Line="15" Column="31" />
+      <File FileName="src/DevEK.App/Views/Vendors/Create.cshtml" Line="26" Column="8" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,21 +13,18 @@
           <Node name="Vendor_3Tier" expanded="True">
             <Node name="DevEK.App" expanded="True">
               <Node name="Views" expanded="True">
-                <Node name="Products" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
+                <Node name="Vendors" expanded="True">
+                  <Node name="Create.cshtml" selected="True" />
                 </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="images" expanded="True" />
+                <Node name="js" expanded="True" />
               </Node>
             </Node>
             <Node name="DevEK.Business" expanded="True">
-              <Node name="Models" expanded="True">
-                <Node name="Enums" expanded="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
             </Node>
             <Node name="DevEK.Data" expanded="True">
-              <Node name="Mappings" expanded="True" />
               <Node name="Repository" expanded="True" />
             </Node>
           </Node>
@@ -40,8 +40,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/Controllers/VendorsController.cs" relfile="src/DevEK.App/Controllers/VendorsController.cs" line="60" column="1" />
-      <Breakpoint file="/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/Controllers/ProductsController.cs" relfile="src/DevEK.App/Controllers/ProductsController.cs" line="184" column="1" />
+      <Breakpoint file="/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/Controllers/VendorsController.cs" relfile="src/DevEK.App/Controllers/VendorsController.cs" line="63" column="1" />
+      <Breakpoint file="/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/Controllers/VendorsController.cs" relfile="src/DevEK.App/Controllers/VendorsController.cs" line="90" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

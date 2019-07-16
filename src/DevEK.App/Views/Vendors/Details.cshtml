@@ -9,13 +9,28 @@
 <div class="backgroundWhiteBorder">
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
+            <input type="hidden" asp-for="Id" />
             <partial name="_DetailField.cshtml" />
-            <hr />
-            <h5>Address</h5>
-            <partial name="_AddressDetails.cshtml" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
             <partial name="_DetailAndBackToListButton" model="@Model.Id" />
         </div>
     </div>
-</div>
 
+    <hr />
+    <div class="container row">
+        <h5>Address</h5>
+        <partial name="_AddressDetails.cshtml" />
+    </div>
+
+    <hr />
+    <div class="container row">
+        <h5>Products</h5>
+        <partial name="../Products/_ListOfProducts.cshtml" model="@Model.Products" />
+    </div>
+
+</div>

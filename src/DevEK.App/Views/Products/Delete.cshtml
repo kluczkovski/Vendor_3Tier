@@ -1,1 +1,23 @@
-﻿
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4>New Vendor</h4>
+
+<div class="backgroundWhiteBorder">
+
+    <h2 class="text-danger">Are you sure you wanto to Delete this record?</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Delete" method="post">
+                <partial name="_DetailField.cshtml" />
+                <partial name="_DeleteAndBackToListButton" model="@Model.Id" />
+            </form>
+        </div>
+        <div class="col-md-6">
+            <img src="~/images/@Model.Image" />
+        </div>
+    </div>
+</div>

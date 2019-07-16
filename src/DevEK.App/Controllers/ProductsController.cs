@@ -95,8 +95,6 @@ namespace DevEK.App.Controllers
             {
                 return NotFound();
             }
-
-            productViewModel = await ListOfVendor(productViewModel);
             return View(productViewModel);
         }
 
@@ -108,13 +106,32 @@ namespace DevEK.App.Controllers
         {
             if (id != productViewModel.Id) return NotFound();
 
-            if (!ModelState.IsValid) return View(productViewModel);
+            if (!ModelState.IsValid)
+            {
+                productViewModel = await ProductFromRepToViewModel(id);
+                View(productViewModel);
+            }
+
+            if (productViewModel.ImageUpload != null)
+            {
+                DeleteUploadFile(productViewModel.Image);
+                var imgPrefixo = Guid.NewGuid() + "_";
+                if (!await UploadFile(productViewModel.ImageUpload, imgPrefixo))
+                {
+                    productViewModel = await ListOfVendor(productViewModel);
+                    return View(productViewModel);
+                }
+                productViewModel.Image = imgPrefixo + productViewModel.ImageUpload.FileName;
+            }
+         
 
             var product = _mapper.Map<Product>(productViewModel);
             await _productRep.Update(product);
             await _productRep.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+       
 
 
         // Get: Delete
@@ -140,20 +157,19 @@ namespace DevEK.App.Controllers
             {
                 return NotFound();
             }
+            DeleteUploadFile(productFromRepo.Image);
             await _productRep.Delete(id);
             await _productRep.SaveChanges();
-            return RedirectToPage(nameof(Index));
+            return RedirectToAction(nameof(Index));
         }
 
 
         // Mapper Product To ViewModel
         private async Task<ProductViewModel> ProductFromRepToViewModel(Guid id)
         {
-            var productFromRep = await _productRep.GetById(id);
+            var productFromRep = await _productRep.GetProductAndVendor(id);
             ProductViewModel productViewModel = _mapper.Map<ProductViewModel>(productFromRep);
-            var vendors = _vendorRep.GetList();
-            productViewModel.Vendors = _mapper.Map<IEnumerable<VendorViewModel>>(vendors);
-            return productViewModel;
+            return await ListOfVendor(productViewModel); 
         }
 
 
@@ -164,6 +180,7 @@ namespace DevEK.App.Controllers
             productViewModel.Vendors = _mapper.Map<IEnumerable<VendorViewModel>>(vendors);
             return productViewModel;
         }
+
 
         // Write image in the image folder
         private async Task<bool> UploadFile(IFormFile imageUpload, string imgPrefixo)
@@ -187,6 +204,17 @@ namespace DevEK.App.Controllers
             }
 
             return true;
+        }
+
+
+        // Delete Image Uploaded
+        private void DeleteUploadFile(string image)
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", image);
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
         }
 
     }

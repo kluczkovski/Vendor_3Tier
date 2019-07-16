@@ -1,0 +1,36 @@
+﻿@model ProductViewModel
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<input type="hidden" asp-for="Image" />
+
+<div class="form-group">
+    <label asp-for="Vendor.Name" class="control-label"></label>
+    <input asp-for="Vendor.Name" class="form-control" readonly />
+</div>
+
+<div class="form-group">
+    <label asp-for="Name" class="control-label"></label>
+    <input asp-for="Name" class="form-control" readonly />
+</div>
+
+<div class="form-group">
+    <label asp-for="Description" class="control-label"></label>
+    <textarea asp-for="Description" class="form-control" rows="4" cols="50" readonly> </textarea>
+</div>
+
+<div class="form-group">
+    <label asp-for="Value" class="control-label"></label>
+    <input asp-for="Value" class="form-control" readonly />
+</div>
+
+<div class="form-group">
+    <label asp-for="IsActive" class="control-label"></label>
+    <input asp-for="IsActive" class="form-control" readonly />
+</div>
+
+<div class="form-group">
+    <label asp-for="Created" class="control-label"></label>
+    <input asp-for="Created" class="form-control" readonly />
+</div>
+
