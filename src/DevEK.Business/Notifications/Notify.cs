@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DevEK.Business.Interfaces;
 
-namespace DevEK.Business.Notification
+namespace DevEK.Business.Notifications
 {
     public class Notify : INotify
     {
@@ -10,11 +11,7 @@ namespace DevEK.Business.Notification
 
         public Notify()
         {
-        }
-
-        public System.Collections.Generic.List<Notification> GetNotifications()
-        {
-            throw new NotImplementedException();
+            _notifications = new List<Notification>();
         }
 
         public void Handle(Notification notification)
@@ -22,14 +19,15 @@ namespace DevEK.Business.Notification
             _notifications.Add(notification);
         }
 
-        public bool ThereIsNotification()
+        public List<Notification> GetNotifications()
         {
-            throw new NotImplementedException();
+            return  _notifications;
         }
 
-        List<Business.Notification> INotify.GetNotifications()
+        public bool ThereIsNotification()
         {
-            throw new NotImplementedException();
+            return _notifications.Any();
         }
+      
     }
 }

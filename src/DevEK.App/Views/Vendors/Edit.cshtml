@@ -7,10 +7,23 @@
 <h4>Edit Vendor</h4>
 
 <div class="backgroundWhiteBorder">
-    <form asp-action="Edit" method="post">
+
+    <vc:Summary></vc:Summary>
+    <form asp-action="Edit">
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Address.Id" />
+        <input type="hidden" asp-for="Address.City" />
+        <input type="hidden" asp-for="Address.Complement" />
+        <input type="hidden" asp-for="Address.Number" />
+        <input type="hidden" asp-for="Address.PostCode" />
+        <input type="hidden" asp-for="Address.Region" />
+        <input type="hidden" asp-for="Address.State" />
+        <input type="hidden" asp-for="Address.Street" />
+
+
         <div class="row">
             <div class="col-md-6">
-                <input type="hidden" asp-for="Id" />
                 <partial name="_EditField.cshtml" />
             </div>
         </div>
@@ -19,14 +32,13 @@
                 <partial name="_EditAndBackToListButton" model="@Model.Id" />
             </dv>
         </div>
-    </form>
 
-    <hr />
-    <div id="EnderecoTarget" class="container row">
-        <h5>Address</h5>
-        <input type="hidden" asp-for="Address.Id" />
-        <partial name="_AddressDetails.cshtml" />
-    </div>
+        <hr />
+        <div id="EnderecoTarget" class="container row">
+            <h5>Address</h5>
+            <partial name="_AddressDetails.cshtml"/>
+        </div>
+    </form>
 
 </div>
 

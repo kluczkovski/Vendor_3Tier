@@ -1,6 +1,16 @@
-﻿namespace DevEK.Business.Services
+﻿using System;
+using System.Threading.Tasks;
+using DevEK.Business.Models;
+
+namespace DevEK.Business.Services
 {
-    internal interface IProductService
+    public interface IProductService : IDisposable
     {
+        Task Add(Product product);
+
+        Task Update(Product product);
+
+        Task Remove(Guid id);
+ 
     }
 }

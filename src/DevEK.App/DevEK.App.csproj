@@ -25,6 +25,8 @@
     <Folder Include="Views\Vendors\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Summary\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevEK.Data\DevEK.Data.csproj" />

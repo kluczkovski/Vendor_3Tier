@@ -7,6 +7,7 @@ using AutoMapper;
 using DevEK.App.ViewModels;
 using DevEK.Business.Interfaces;
 using DevEK.Business.Models;
+using DevEK.Business.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,15 +17,19 @@ namespace DevEK.App.Controllers
 {
     public class ProductsController : BaseController
     {
+        private readonly IProductService _productService;
         private readonly IProductRepository _productRep;
         private readonly IVendorRepository _vendorRep;
         private readonly IMapper _mapper;
 
         public ProductsController(IProductRepository productRepository,
-                                 IMapper mapper,
-                                 IVendorRepository vendorRepository)
+                                  IProductService productService,
+                                  IMapper mapper,
+                                  IVendorRepository vendorRepository, 
+                                  INotify notify) : base(notify)
         {
             _productRep = productRepository;
+            _productService = productService;
             _mapper = mapper;
             _vendorRep = vendorRepository;
         }
@@ -81,8 +86,12 @@ namespace DevEK.App.Controllers
             productViewModel.Image = imgPrefixo + productViewModel.ImageUpload.FileName;
 
             var product = _mapper.Map<Product>(productViewModel);
-            await _productRep.Insert(product);
-            await _productRep.SaveChanges();
+            await _productService.Add(product);
+            if (!OperationIsValid())
+            {
+                return View(productViewModel);
+            }
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -126,8 +135,12 @@ namespace DevEK.App.Controllers
          
 
             var product = _mapper.Map<Product>(productViewModel);
-            await _productRep.Update(product);
-            await _productRep.SaveChanges();
+            await _productService.Update(product);
+            if (!OperationIsValid())
+            {
+                return View(productViewModel);
+            }
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -152,14 +165,19 @@ namespace DevEK.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConFirmed(Guid id)
         {
-            var productFromRepo = await _productRep.GetById(id);
+            var productFromRepo = await ProductFromRepToViewModel(id);
             if (productFromRepo == null)
             {
                 return NotFound();
             }
             DeleteUploadFile(productFromRepo.Image);
-            await _productRep.Delete(id);
-            await _productRep.SaveChanges();
+            await _productService.Remove(id);
+            if (!OperationIsValid())
+            {
+                return View(productFromRepo);
+            }
+
+            TempData["Sucesso"] = "The Product was deleted.";
             return RedirectToAction(nameof(Index));
         }
 

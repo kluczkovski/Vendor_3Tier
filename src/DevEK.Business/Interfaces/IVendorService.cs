@@ -1,6 +1,18 @@
-﻿namespace DevEK.Business.Services
+﻿using System;
+using System.Threading.Tasks;
+using DevEK.Business.Models;
+
+namespace DevEK.Business.Services
 {
-    internal interface IVendorService
+    public interface IVendorService : IDisposable
     {
+        Task Add(Vendor vendor);
+
+        Task Update(Vendor vendor);
+
+        Task Remove(Guid id);
+
+        Task UpdateAddress(Address address);
+
     }
 }

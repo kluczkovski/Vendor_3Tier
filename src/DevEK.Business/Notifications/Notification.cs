@@ -1,10 +1,13 @@
 ﻿using System;
-namespace DevEK.Business.Notification
+namespace DevEK.Business.Notifications
 {
     public class Notification
     {
-        public Notification()
+        public string Message { get; }
+
+        public Notification(string message)
         {
+            Message = message;
         }
     }
 }

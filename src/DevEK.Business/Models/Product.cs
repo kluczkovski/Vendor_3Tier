@@ -6,7 +6,6 @@ namespace DevEK.Business.Models
         public Guid VendorId { get; set; }
         public Vendor Vendor { get; set; } // EF Notation
 
-
         public string Name { get; set; }
 
         public string Description { get; set; }

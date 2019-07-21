@@ -5,6 +5,7 @@ using AutoMapper;
 using DevEK.App.ViewModels;
 using DevEK.Business.Interfaces;
 using DevEK.Business.Models;
+using DevEK.Business.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,15 +15,16 @@ namespace DevEK.App.Controllers
     public class VendorsController : BaseController
     {
         private readonly IVendorRepository _vendorRep;
-        private readonly IAddressRepository _addressRep;
+        private readonly IVendorService _vendorService;
         private readonly IMapper _mapper;
 
         public VendorsController(IVendorRepository vendorRepository,
-                                 IAddressRepository addressRepository,
-                                 IMapper mapper)
+                                 IVendorService vendorService,
+                                 IMapper mapper,
+                                 INotify notify) :base(notify)
         {
             _vendorRep = vendorRepository;
-            _addressRep = addressRepository;
+            _vendorService = vendorService;
             _mapper = mapper;
         }
 
@@ -63,8 +65,12 @@ namespace DevEK.App.Controllers
             if (!ModelState.IsValid) return View(vendorView);
 
             var vendor = _mapper.Map<Vendor>(vendorView);
-            await _vendorRep.Insert(vendor);
-            await _vendorRep.SaveChanges();
+
+            await _vendorService.Add(vendor);
+            if (!OperationIsValid())
+            {
+                return View(vendorView);
+            }
             return RedirectToAction(nameof(Index));
         }
 
@@ -94,8 +100,11 @@ namespace DevEK.App.Controllers
 
 
             var vendor = _mapper.Map<Vendor>(vendorViewModel);
-            await _vendorRep.Update(vendor);
-            await _vendorRep.SaveChanges();
+            await _vendorService.Update(vendor);
+            if (!OperationIsValid())
+            {
+                return View(vendorViewModel);
+            }
             return RedirectToAction(nameof(Index));
         }
 
@@ -118,13 +127,16 @@ namespace DevEK.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConFirmed(Guid id)
         {
-            var vendorFromRepo = await _vendorRep.GetById(id);
+            var vendorFromRepo = await VendorFromRepToViewModel(id);
             if (vendorFromRepo == null)
             {
                 return NotFound();
             }
-            await _vendorRep.Delete(id);
-            await _vendorRep.SaveChanges();
+            await _vendorService.Remove(id);
+            if (!OperationIsValid())
+            {
+                return View(vendorFromRepo);
+            }
             return RedirectToAction(nameof(Index));
         }
 
@@ -151,7 +163,7 @@ namespace DevEK.App.Controllers
                 return PartialView("_AddressUpdate", new VendorViewModel { Address = vendorView.Address });
             }
 
-            await _addressRep.Update(_mapper.Map<Address>(vendorView.Address));
+            await _vendorService.UpdateAddress(_mapper.Map<Address>(vendorView.Address));
 
             var url = Url.Action("GetAddress", "Vendors", new { id = vendorView.Address.VendorId });
             return Json(new { success = true, url}); 
