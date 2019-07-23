@@ -25,7 +25,7 @@
                 <td>@Model.Address.Region</td>
                 <td>@Model.Address.State</td>
                 <td class="text-right">
-                    <a asp-action="UpdateAddress" asp-route-id="@Model.Id" data-modal="" class="btn btn-warning">
+                    <a supress-by-action="Edit,GetAddress" asp-action="UpdateAddress" asp-route-id="@Model.Id" data-modal="" class="btn btn-warning">
                         <span title="Edit" class="fa fa-pencil-alt"></span>
                     </a>
                 </td>

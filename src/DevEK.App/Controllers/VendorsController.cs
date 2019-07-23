@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using DevEK.App.Extensions;
 using DevEK.App.ViewModels;
 using DevEK.Business.Interfaces;
 using DevEK.Business.Models;
 using DevEK.Business.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace DevEK.App.Controllers
 {
+    [Authorize]
     public class VendorsController : BaseController
     {
         private readonly IVendorRepository _vendorRep;
@@ -30,6 +33,7 @@ namespace DevEK.App.Controllers
 
 
         // GET: List
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var vendorsFromRep = await _vendorRep.GetList();
@@ -40,6 +44,7 @@ namespace DevEK.App.Controllers
 
 
         // Get: Detail
+        [AllowAnonymous]
         public async Task<IActionResult> Details(Guid id)
         {
             var vendorViewModel = await VendorFromRepToViewModel(id);
@@ -52,12 +57,14 @@ namespace DevEK.App.Controllers
 
 
         // Get: Create
+        [ClaimsAuthorize("Vendor","Add")]
         public IActionResult Create()
         {
             return View();
         }
 
         // Post: Create
+        [ClaimsAuthorize("Vendor", "Add")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(VendorViewModel vendorView)
@@ -76,6 +83,7 @@ namespace DevEK.App.Controllers
 
 
         // Get: Edit
+        [ClaimsAuthorize("Vendor", "Edit")]
         public async Task<IActionResult> Edit(Guid id)
         {
             var vendorAllInformationFromRep = await _vendorRep.GetVendorProducsAddress(id);
@@ -90,6 +98,7 @@ namespace DevEK.App.Controllers
 
         // Post: Edit
         [HttpPost]
+        [ClaimsAuthorize("Vendor", "Edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, VendorViewModel vendorViewModel)
         {
@@ -110,6 +119,7 @@ namespace DevEK.App.Controllers
 
 
         // Get: Delete
+        [ClaimsAuthorize("Vendor", "Delete")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var vendorViewModel = await VendorFromRepToViewModel(id);
@@ -125,6 +135,7 @@ namespace DevEK.App.Controllers
         // Post: Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [ClaimsAuthorize("Vendor", "Delete")]
         public async Task<IActionResult> DeleteConFirmed(Guid id)
         {
             var vendorFromRepo = await VendorFromRepToViewModel(id);

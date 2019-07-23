@@ -1,26 +1,22 @@
 ﻿<Properties StartupConfiguration="{F546CCD9-8503-46F2-BE13-9C20D07A490B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DevEK.App/wwwroot/js/site.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DevEK.App/Extensions/CustomAuthorize.cs">
     <Files>
-      <File FileName="src/DevEK.App/Controllers/ProductsController.cs" Line="180" Column="62" />
-      <File FileName="src/DevEK.App/Views/Products/Index.cshtml" Line="14" Column="5" />
-      <File FileName="src/DevEK.App/Views/Vendors/Create.cshtml" Line="11" Column="5" />
-      <File FileName="src/DevEK.App/Views/Shared/Components/Summary/Default.cshtml" Line="23" Column="23" />
-      <File FileName="src/DevEK.App/wwwroot/js/site.js" Line="108" Column="1" />
+      <File FileName="src/DevEK.App/Startup.cs" Line="56" Column="52" />
+      <File FileName="src/DevEK.App/Controllers/HomeController.cs" Line="31" Column="105" />
+      <File FileName="src/DevEK.App/Views/Shared/Error.cshtml" Line="10" Column="69" />
+      <File FileName="src/DevEK.App/ViewModels/ErrorViewModel.cs" Line="12" Column="1" />
+      <File FileName="src/DevEK.App/appsettings.Production.json" Line="1" Column="1" />
+      <File FileName="src/DevEK.App/appsettings.Development.json" Line="9" Column="1" />
+      <File FileName="global.json" Line="1" Column="1" />
+      <File FileName="src/DevEK.App/Extensions/CustomAuthorize.cs" Line="15" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Vendor_3Tier" expanded="True">
-            <Node name="DevEK.App" expanded="True">
-              <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True">
-                  <Node name="site.js" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-            <Node name="DevEK.Data" expanded="True">
-              <Node name="Context" expanded="True" />
-              <Node name="Repository" expanded="True" />
+            <Node name="DevEK.App" expanded="True" selected="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Extensions" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -35,7 +31,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/Controllers/VendorsController.cs" relfile="src/DevEK.App/Controllers/VendorsController.cs" line="94" column="1" />
+      <Breakpoint file="/Users/ekluczkovski/Projects/Vendor_3Tier/src/DevEK.App/Controllers/VendorsController.cs" relfile="src/DevEK.App/Controllers/VendorsController.cs" line="103" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

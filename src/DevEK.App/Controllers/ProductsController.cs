@@ -4,10 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using DevEK.App.Extensions;
 using DevEK.App.ViewModels;
 using DevEK.Business.Interfaces;
 using DevEK.Business.Models;
 using DevEK.Business.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DevEK.App.Controllers
 {
+    [Authorize]
     public class ProductsController : BaseController
     {
         private readonly IProductService _productService;
@@ -36,6 +39,7 @@ namespace DevEK.App.Controllers
 
 
         // GET: List
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var productsFromRep = await _productRep.GetAllProductAndVendor();
@@ -46,6 +50,7 @@ namespace DevEK.App.Controllers
 
 
         // Get: Detail
+        [AllowAnonymous]
         public async Task<IActionResult> Details(Guid id)
         {
             var productViewModel = await ProductFromRepToViewModel(id);
@@ -58,6 +63,7 @@ namespace DevEK.App.Controllers
 
 
         // Get: Create
+        [ClaimsAuthorize("Product", "Create")]
         public async Task<IActionResult> Create()
         {
             var productViewModel = await ListOfVendor(new ProductViewModel());
@@ -68,6 +74,7 @@ namespace DevEK.App.Controllers
         // Post: Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ClaimsAuthorize("Product", "Create")]
         public async Task<IActionResult> Create(ProductViewModel productViewModel)
         {
 
@@ -95,8 +102,9 @@ namespace DevEK.App.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-    
+
         // Get: Edit
+        [ClaimsAuthorize("Product", "Edit")]
         public async Task<IActionResult> Edit(Guid id)
         {
             var productViewModel = await ProductFromRepToViewModel(id);
@@ -111,6 +119,7 @@ namespace DevEK.App.Controllers
         // Post: Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ClaimsAuthorize("Product", "Edit")]
         public async Task<IActionResult> Edit(Guid id, ProductViewModel productViewModel)
         {
             if (id != productViewModel.Id) return NotFound();
@@ -144,10 +153,11 @@ namespace DevEK.App.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       
+
 
 
         // Get: Delete
+        [ClaimsAuthorize("Product", "Delete")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var productView = await ProductFromRepToViewModel(id);
@@ -163,6 +173,7 @@ namespace DevEK.App.Controllers
         // Post: Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [ClaimsAuthorize("Product", "Delete")]
         public async Task<IActionResult> DeleteConFirmed(Guid id)
         {
             var productFromRepo = await ProductFromRepToViewModel(id);

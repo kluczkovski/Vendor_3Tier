@@ -64,4 +64,9 @@ Global
 		{26C5AB72-4325-42A3-883D-0619BF9C014E}.Release|x86.ActiveCfg = Release|Any CPU
 		{26C5AB72-4325-42A3-883D-0619BF9C014E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+	EndGlobalSection
 EndGlobal
